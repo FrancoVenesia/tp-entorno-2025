@@ -7,7 +7,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
+    # Instalo el comando Ping 
     && apt-get install -y iputils-ping \
+    # Instalo el comando Find
+    # apt-get install -y findutils \
     && apt-get install -y --no-install-recommends \
     python3.9 \
     python3.9-dev \
@@ -54,5 +57,8 @@ RUN echo save_dir: /usr/src/app >> /usr/local/lib/python3.9/dist-packages/ultral
 ENV TERM=xterm
 ENV COLORTERM=24bit
 COPY ["src/", "/app/"]
+# Creo la carpeta imagenes en el Contenedor
+COPY ["/imagenes", "/imagenes/"]
+
 WORKDIR /app
 ENTRYPOINT ["/app/main.sh"]
