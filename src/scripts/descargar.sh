@@ -7,8 +7,8 @@
 # Las imágenes descargadas tienen extensión .jpg.
 # Asegúrese de devolver un valor de salida acorde a la situación.
 NOMBRE=""
-wget -qO img.jpg https://tuia-edp.org/random-image &&  NOMBRE=`sha256sum img.jpg ` && mv -f img.jpg "/imagenes/${NOMBRE:0:32}.jpg" && echo "${NOMBRE:0:32}.jpg agregada"&& exit 0 
-#while [[ find /imagenes/ -name ${NOMBRE:0:32}.jpg ]]; do
+wget -qO img.jpg https://tuia-edp.org/random-image &&  NOMBRE=`sha256sum img.jpg ` && mv -f img.jpg "/imagenes/${NOMBRE:0:64}.jpg" && echo "${NOMBRE:0:64}.jpg agregada"&& exit 0 
+#while [[ find /imagenes/ -name ${NOMBRE:0:64}.jpg ]]; do
 #    wget -O img.jpg https://tuia-edp.org/random-image &&  NOMBRE=`md5sum img.jpg `
 #done
 
