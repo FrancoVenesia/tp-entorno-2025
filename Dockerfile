@@ -59,6 +59,6 @@ ENV COLORTERM=24bit
 COPY ["src/", "/app/"]
 # Creo la carpeta imagenes en el Contenedor
 COPY ["/imagenes", "/imagenes/"]
-
+VOLUME /imagenes
 WORKDIR /app
 ENTRYPOINT ["/app/main.sh"]
