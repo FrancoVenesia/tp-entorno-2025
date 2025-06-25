@@ -51,5 +51,6 @@ Tambien puede correrse el programa fuera del contenedor:
 
 ## Integrantes
 
-* Integrante 1.
-* Integrante 2.
+* Agustin Panichelli.
+* Sofia Toscano.
+* Franco Venesia.
