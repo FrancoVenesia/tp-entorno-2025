@@ -39,9 +39,9 @@ o
 docker build -t entorno .
 ```
 
-Luego puede ejecutarse el contenedor con el siguiente comando:
+Luego puede ejecutarse (desde la carpeta de los archivos) el contenedor con el siguiente comando:
 ```bash
-docker run -it entorno
+docker run --volume $PWD/imagenes:/imagenes -it entorno
 ```
 
 Tambien puede correrse el programa fuera del contenedor:
@@ -51,6 +51,6 @@ Tambien puede correrse el programa fuera del contenedor:
 
 ## Integrantes
 
-* Agustin Panichelli.
+* Agustin Panichelli. 
 * Sofia Toscano.
 * Franco Venesia.
