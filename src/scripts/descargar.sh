@@ -43,10 +43,4 @@ fi
 
 mv -f /imagenes/img.jpg "/imagenes/$NOMBRE" && echo "$NOMBRE agregada"&& exit 0  #Renombro la imagen con su nombre unico y muestro un mensaje que dice que se descargo
 
-NOMBRE=""
-wget -q0 img.jpg https://tuia-edp.org/random-image &&  NOMBRE=`sha256sum img.jpg ` && mv -f img.jpg "/imagenes/${NOMBRE:0:64}.jpg" && echo "${NOMBRE:0:64}.jpg agregada"&& exit 0 
-#while [[ find /imagenes/ -name ${NOMBRE:0:64}.jpg ]]; do
-#    wget -O img.jpg https://tuia-edp.org/random-image &&  NOMBRE=`md5sum img.jpg `
-#done
-
 echo Descarga de imágenes de internet no implementada. && exit 1
