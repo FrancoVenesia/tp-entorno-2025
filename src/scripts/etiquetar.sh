@@ -51,8 +51,8 @@ for IMAGEN in `ls *.jpg` ; do # OPCION PIPE POTENCIAL  while  QUE PONGO ACA; do
 #3) Describirlos usando Moondream
 #Con "$DESCRIPCION" ya toma el parrafo de descripcion
 #Falta reparar su insercion en imagenes.json
-	DESCRIPCION=`ollama run moondream "{'content': 'Describe me this image', 'images': '/imagenes/$IMAGEN'}"`
-	img_json $IMAGEN "$DESCRIPCION"
+	DESCRIPCION=`ollama run moondream "{'content': 'Describe me this image, put the description between " "', 'images': '/imagenes/$IMAGEN'}" | grep "\"*\""`
+	img_json $IMAGEN $DESCRIPCION
 
 done
 
@@ -67,6 +67,7 @@ done
 #		echo {}  $IMAGENES_JSON
 #	fi
 #}
+
 
 
 
