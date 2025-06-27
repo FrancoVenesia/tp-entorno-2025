@@ -20,9 +20,9 @@ etiq_json() {
 }
 img_json() {
 	
-	if [[ `cat "$IMAGENES_JSON" | jq --arg k "$1" '.[$k]' | grep -c $2`  -eq 0 ]]; then
+	if [[ `cat "$IMAGENES_JSON" | jq --arg k "$1" '.[$k]' | grep -c "$2"`  -eq 0 ]]; then
 	#si no existe $2 en $1 ejecuto lo que sigue
-	 cat "$IMAGENES_JSON" | jq --arg k "$1" --arg v "$2" '
+	 cat "$IMAGENES_JSON" | jq --arg k "$1" --arg v $2 '
 	  .[$k] += $v
     ' > tmp && mv tmp "$IMAGENES_JSON" 
 	#echo `cat "$ETIQUETAS_JSON"`
@@ -47,17 +47,15 @@ for IMAGEN in `ls *.jpg` ; do # OPCION PIPE POTENCIAL  while  QUE PONGO ACA; do
 		ETIQUETA="no_detections"
 	fi
 	echo "$ETIQUETA"
-	
-	#ollama run moondream "{'content': 'Describe me this image', 'images': '/imagenes/$IMAGEN'}"
-
 	etiq_json $ETIQUETA $IMAGEN
-
-	# img_json $IMAGEN $DESCRIPCION
+#3) Describirlos usando Moondream
+#Con "$DESCRIPCION" ya toma el parrafo de descripcion
+#Falta reparar su insercion en imagenes.json
+	DESCRIPCION=`ollama run moondream "{'content': 'Describe me this image', 'images': '/imagenes/$IMAGEN'}"`
+	img_json $IMAGEN "$DESCRIPCION"
 
 done
 
-
-#3) Describirlos usando Moondream
 
 #4) Crear archivos JSON "$ETIQUETAS_JSON", imagenes.json
 
@@ -69,17 +67,6 @@ done
 #		echo {}  $IMAGENES_JSON
 #	fi
 #}
-#5) Manipular con comando jq
-
-
-#6) Almacenar y mostrar valore
 
 
 
-
-#Comando YOLO para clasificar
-
-
-#Comando Moondream para describir
-
-#Inicializar JSON
