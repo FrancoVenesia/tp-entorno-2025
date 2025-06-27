@@ -41,7 +41,7 @@ docker build -t entorno .
 
 Luego puede ejecutarse (desde la carpeta de los archivos) el contenedor con el siguiente comando:
 ```bash
-docker run --volume $PWD/imagenes:/imagenes -it entorno
+ddocker run --volume $PWD/imagenes:/imagenes --network=host -it entorno
 ```
 
 Tambien puede correrse el programa fuera del contenedor:
