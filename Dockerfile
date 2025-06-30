@@ -56,7 +56,8 @@ RUN ollama serve & \
 # Instalar los programas necesarios
 RUN apt-get update && \
 	apt-get install -y iputils-ping \
-	jq
+	jq /
+    jp2a
 # Configuracion de la aplicación
 ENV TERM xterm
 ENV COLORTERM 24bit
