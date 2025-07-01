@@ -41,16 +41,32 @@ docker build -t entorno .
 
 Luego puede ejecutarse (desde la carpeta de los archivos) el contenedor con el siguiente comando:
 ```bash
-ddocker run --volume $PWD/imagenes:/imagenes --network=host -it entorno
+docker run --volume $PWD/imagenes:/imagenes --network=host -it entorno
 ```
 
-Tambien puede correrse el programa fuera del contenedor:
+Puede correrse el programa fuera del contenedor don el comando:
 ```bash
 ./src/main.sh
 ```
+Si se tiene instalado los paquetes:
+* jp2a
+* jq
+* python 3
+* yolo
+* ollama moondream
 
 ## Integrantes
 
 * Agustin Panichelli. 
 * Sofia Toscano.
 * Franco Venesia.
+
+<!---
+Quisiera agradecer a las paginas de documentacion que ayudaron a realizar este TP
+https://ss64.com/bash
+https://docs.docker.com/reference/dockerfile/
+https://docs.docker.com/engine/network/
+https://docs.docker.com/engine/storage/volumes/
+https://jqlang.org/manual/
+https://www.w3schools.com/html/
+ --->
