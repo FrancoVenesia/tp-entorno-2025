@@ -1,4 +1,5 @@
-FROM ollama/ollama:latest
+# Versión fija de la imagen base: con "latest" la imagen cambia sola y el build se rompe
+FROM ollama/ollama:0.40.13
 
 RUN mkdir -p /usr/src/app
 
@@ -35,8 +36,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         software-properties-common \
     && rm -rf /root/.cache /tmp/* /var/lib/apt/lists/*
 
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install --no-cache-dir urllib3 idna certifi
+# No se actualiza pip: el pip instalado por apt no se puede desinstalar y el build falla
+RUN python3 -m pip install --no-cache-dir urllib3 idna certifi
 
 # Instalación del modelo YOLO
 COPY ./models/yolov8l.pt /usr/src/app/
@@ -59,8 +60,8 @@ RUN apt-get update && \
 	jq \
     jp2a
 # Configuracion de la aplicación
-ENV TERM xterm
-ENV COLORTERM 24bit
+ENV TERM=xterm
+ENV COLORTERM=24bit
 COPY ["src/", "/app/"]
 WORKDIR /app
 ENTRYPOINT ["/app/main.sh"]
