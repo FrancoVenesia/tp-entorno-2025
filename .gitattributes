@@ -1,0 +1,4 @@
+# Los scripts y el Dockerfile se ejecutan en Linux: siempre con saltos de línea LF
+* text=auto eol=lf
+*.jpg binary
+*.pt binary
